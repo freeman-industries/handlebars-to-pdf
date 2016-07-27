@@ -1,0 +1,20 @@
+{
+  "name": "handlebars-to-pdf",
+  "version": "1.0.0",
+  "description": "Turn a Handlebars template into a PDF. Receipts, contracts, statements etc. The choice is yours!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Freeman Industries <nabil@instafork.com> (http://freemans.website)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/freeman-industries/freeman-env/issues"
+  },
+  "homepage": "https://github.com/freeman-industries/freeman-pdf-handlebars#readme",
+  "dependencies": {
+    "freeman-check": "^1.0.1",
+    "handlebars": "^4.0.5",
+    "html-pdf": "^2.0.1"
+  }
+}
