@@ -1,30 +1,28 @@
 //handlebars-to-pdf
-var Check = require('freeman-check');
 var Handlebars = require('handlebars');
 var PDF = require('html-pdf');
 
 module.exports = {
     create: function(options, callback){
-        //check arguments have been supplied correctly. Required template_html and template_data, optional layout_settings
-        var check_error = Check.test(options, {
-            template_html: "string",
-            template_data: "object"
-        }, {
-            layout_settings: {
-                format: "string",
-                orientation: "string",
-                border: {
-                    top: "string",
-                    right: "string",
-                    bottom: "string",
-                    left: "string"
-                }
-            }
-        });
+        //validate callback
+        if(typeof callback !== "function"){
+            throw new Error("No callback function supplied.");
+            return;
+        }
 
-        if(check_error instanceof Check.Error){
-            callback(check_error);
+        //check options have been supplied correctly. Required template_html and template_data, optional layout_settings
+        if(!options || typeof options !== "object"){
+            callback(new Error("`options` is malformatted or doesn't exist."), null);
+            return;
+        }
 
+        if(!options.template_html || typeof options.template_html !== "string"){
+            callback(new Error("`options.template_html` is malformatted or doesn't exist."), null)
+            return;
+        }
+
+        if(!options.template_data || typeof options.template_data !== "object"){
+            callback(new Error("`options.template_data` is malformatted or doesn't exist."), null)
             return;
         }
 
